@@ -150,5 +150,7 @@ class Handler(BaseHTTPRequestHandler):
 
 
 if __name__ == '__main__':
-    print('Цифровой помощник: http://127.0.0.1:8000')
-    ThreadingHTTPServer(('127.0.0.1', 8000), Handler).serve_forever()
+    import os
+    port = int(os.environ.get('PORT', 8000))
+    print(f'Цифровой помощник запущен на порту {port}')
+    ThreadingHTTPServer(('0.0.0.0', port), Handler).serve_forever()
